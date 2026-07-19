@@ -3,11 +3,8 @@
 <html lang="ro"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--<base href="https://raw.githubusercontent.com/Userutil2025/simplu/main/Util.html">-->
 	<!--<base href=".">--><base href=".">
-    
-	
     <title>Util</title>
-    
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f42c.svg">
+      <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f42c.svg">
 <style>
         details {
             background-color: #006600; /* Culoare verde deschis (DarkSeaGreen) - textul alb se vede bine pe ea */
@@ -17,10 +14,7 @@
             max-width: 160px;          /* Limitează lățimea meniului (opțional) */
         }
     </style></head>   
-    
-
-
-<body style="background:#800020 url(&#39;https://cdn-imgix.headout.com/media/images/62caa1c3-88d4-4366-9508-fc25be89123c-1772536389611-357397.jpg&#39;) no-repeat center center fixed; background-size:cover">
+ <body style="background:#800020 url(&#39;https://cdn-imgix.headout.com/media/images/62caa1c3-88d4-4366-9508-fc25be89123c-1772536389611-357397.jpg&#39;) no-repeat center center fixed; background-size:cover">
       <!-- Conținutul paginii tale vine aici -->
 <img src="./Util9_files/saved_resource" alt="Cod QR" style="position: fixed; bottom: 20px; right: 20px; width: 150px; height: 150px;">
     <!-- Codul QR poziționat peste fundal
@@ -33,7 +27,6 @@
     <li><a href="https://www.jobradar24.ro/account/employer/jobs/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Job radar</a></li>
    </ul>  
 </details>
-
 <details>
     <summary style="color:white; font-family:Arial; font-size:18px;">Conturi</summary>
     <ul>
@@ -151,14 +144,11 @@ document.querySelectorAll('#submenu a').forEach(link => {
             var targetDate = new Date(&#39;2026-07-27&#39;);
             var now = new Date();
             var diff = targetDate - now;
-
             var days = Math.floor(diff / (1000 * 60 * 60 * 24));
             var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
             var toast = document.getElementById(&#39;toast&#39;);
             toast.innerHTML = &#39; &#39; + days + &#39; zile si &#39; + hours + &#39; ore &#39;;
             toast.style.display = &#39;block&#39;;
-
             setTimeout(function() {
                 toast.style.display = &#39;none&#39;;
             }, 5000);
@@ -169,8 +159,7 @@ document.querySelectorAll('#submenu a').forEach(link => {
             border: none;
             border-radius: 50px;
             cursor: pointer;">
-        
-    </button>
+        </button>
 </div>
 <p id="rezultat"></p>
 <button onclick="afiseazaTimp()" style="
@@ -193,15 +182,12 @@ function afiseazaTimp() {
     var diff = now - startDate;
     var zile = Math.floor(diff / (800 * 60 * 60 * 24));
     var ore = Math.floor((diff % (800 * 60 * 60 * 24)) / (800 * 60 * 60));
-    alert( zile + " zile trecute si " +  "ore");
-}
+    alert( zile + " zile trecute si " +  "ore");}
 </script>
 <script>
 document.querySelectorAll('#submenu a').forEach(link => {
     link.onclick = function () {
-        document.getElementById('submenu').hidden = true;
-    };
-});
+        document.getElementById('submenu').hidden = true;    };});
 </script><script>
 function afiseazaTimp() {
     var startDate = new Date('2026-07-18T16:00:00');
