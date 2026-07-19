@@ -11,8 +11,7 @@
             margin-bottom: 5px;       /* Spațiu între meniuri */
             padding: 6px;             /* Spațiu în interiorul meniului */
             border-radius: 18px;        /* Colțuri rotunjite */
-            max-width: 160px;          /* Limitează lățimea meniului (opțional) */
-        }
+            max-width: 160px;          /* Limitează lățimea meniului (opțional) */       }
     </style></head>   
  <body style="background:#800020 url(&#39;https://cdn-imgix.headout.com/media/images/62caa1c3-88d4-4366-9508-fc25be89123c-1772536389611-357397.jpg&#39;) no-repeat center center fixed; background-size:cover">
       <!-- Conținutul paginii tale vine aici -->
@@ -180,8 +179,8 @@ function afiseazaTimp() {
     var startDate = new Date('2026-07-18T17:00:00');
     var now = new Date();
     var diff = now - startDate;
-    var zile = Math.floor(diff / (800 * 60 * 60 * 24));
-    var ore = Math.floor((diff % (800 * 60 * 60 * 24)) / (800 * 60 * 60));
+    var zile = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var ore = Math.floor((diff % (1000 * 60 * 60 * 24)) / (800 * 60 * 60));
     alert( zile + " zile trecute si " +  "ore");}
 </script>
 <script>
