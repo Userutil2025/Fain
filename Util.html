@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
+<!-- saved from url=(0045)https://userutil2025.github.io/Fain/Util.html -->
 <html lang="ro"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!--<base href="https://raw.githubusercontent.com/Userutil2025/simplu/main/Util.html">-->
-	<base href=".">
+	<!--<base href=".">--><base href=".">
     
-<head>	
+	
     <title>Util</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f42c.svg">
-</head>   
-    <style>
+<style>
         details {
             background-color: #006600; /* Culoare verde deschis (DarkSeaGreen) - textul alb se vede bine pe ea */
             margin-bottom: 5px;       /* Spațiu între meniuri */
@@ -17,12 +16,13 @@
             border-radius: 18px;        /* Colțuri rotunjite */
             max-width: 160px;          /* Limitează lățimea meniului (opțional) */
         }
-    </style>
+    </style></head>   
+    
 
 
 <body style="background:#800020 url(&#39;https://cdn-imgix.headout.com/media/images/62caa1c3-88d4-4366-9508-fc25be89123c-1772536389611-357397.jpg&#39;) no-repeat center center fixed; background-size:cover">
       <!-- Conținutul paginii tale vine aici -->
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/Userutil2025/Fain" alt="Cod QR" style="position: fixed; bottom: 20px; right: 20px; width: 150px; height: 150px;">
+<img src="./Util9_files/saved_resource" alt="Cod QR" style="position: fixed; bottom: 20px; right: 20px; width: 150px; height: 150px;">
     <!-- Codul QR poziționat peste fundal
 	<img src="qr.jpg" alt="Cod QR" style="position: fixed; bottom: 20px; right: 20px; width: 150px; height: 150px; z-index: 9999;">   -->
 <details>
@@ -111,9 +111,9 @@
 <details>
 <summary style="color:white; font-family:Arial; font-size:20px;">Meteo</summary>
   <ul>
-		  	<li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.34/47.104/24.7924&map=cloudsAndPrecipitation~hourly~auto~sfc~none/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Ploi sigure</a></li>
-        	<li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.79/46.9941/24.661&map=radar~radarMap~none~none~none/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Precipitatii</a>
-	        <li><a href="https://meteofor.ro/weather-paris-1623/2-weeks/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Paris</a></li>
+		  	<li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.34/47.104/24.7924&amp;map=cloudsAndPrecipitation~hourly~auto~sfc~none/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Ploi sigure</a></li>
+        	<li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.79/46.9941/24.661&amp;map=radar~radarMap~none~none~none/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Precipitatii</a>
+	        </li><li><a href="https://meteofor.ro/weather-paris-1623/2-weeks/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Paris</a></li>
 			<li><a href="https://meteofor.ro/weather-bistrita-3353/weekly/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Bistrita</a></li>
             <li><a href="https://meteofor.ro/weather-morareni-335821/weekly/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Morareni</a></li>
             <li><a href="https://meteofor.ro/weather-sieu-odorhei-17444/weekly/" target="_blank" style="color:white;font-family:Arial;font-size:18px;" onclick="this.closest(&#39;details&#39;).open=false;">Sieu odorhei</a></li>
@@ -203,7 +203,7 @@ document.querySelectorAll('#submenu a').forEach(link => {
 
 <script>
 function afiseazaTimp() {
-    var startDate = new Date('2026-07-18T16:00:00');
+    var startDate = new Date('2026-07-18T17:00:00');
     var now = new Date();
 
     var diff = now - startDate;
@@ -233,7 +233,7 @@ document.querySelectorAll('#submenu a').forEach(link => {
 });
 </script><script>
 function afiseazaTimp() {
-    var startDate = new Date('2026-06-07T16:00:00');
+    var startDate = new Date('2026-07-18T16:00:00');
     var now = new Date();
 
     var diff = now - startDate;
@@ -243,7 +243,8 @@ function afiseazaTimp() {
 
     alert( zile + " zile trecute si " +  "ore");
 }
-</script></body><!--
+</script>
+</body><!--
 
 
 
