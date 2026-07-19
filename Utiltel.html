@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <!-- Această linie este obligatorie pentru ca pagina să se adapteze pe ecranul telefonului -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Util</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f42c.svg">
+    <style>
+        body {
+            background: #800020 url('https://cdn-imgix.headout.com/media/images/62caa1c3-88d4-4366-9508-fc25be89123c-1772536389611-357397.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 10px; /* Adaugă o mică margine pe marginile ecranului telefonului */
+        }
+        details {
+            background-color: #006600;
+            margin-bottom: 8px; /* Spațiu puțin mai mare între blocuri, mai ușor de apăsat pe telefon */
+            padding: 10px;      /* Interior mai generos pentru ecrane tactile */
+            border-radius: 18px;
+            max-width: 90%;     /* Pe telefon ocupă aproape toată lățimea ecranului */
+        }
+        summary, details a {
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 20px;    /* Text mărit ușor pentru a fi citit clar pe mobil */
+            text-decoration: none;
+        }
+        /* Stiluri speciale pentru listele din meniuri */
+        details ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        details li {
+            margin-bottom: 10px; /* Spațiu între link-uri ca să nu le apeși greșit */
+        }
+        img.qr {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 100px;  /* Dimensiune redusă pentru telefon, ca să nu acopere textul */
+            height: 100px;
+            opacity: 0.9;  /* Ușor transparent ca să se vadă fundalul prin el */
+        }
+    </style>
+</head>   
+<body>
+
+<img src="./Util9_files/saved_resource" alt="Cod QR" class="qr">
+
+<details>
+    <summary>Ferma</summary>
+    <ul>
+        <li><a href="https://www.meseriasi.ro/utilizator/panou-de-control" target="_blank" onclick="this.closest('details').open=false;">Meseriasi</a></li>
+        <li><a href="https://www.olx.ro/" target="_blank" onclick="this.closest('details').open=false;">Olx</a></li>
+        <li><a href="https://www.jobradar24.ro/account/employer/jobs/" target="_blank" onclick="this.closest('details').open=false;">Job radar</a></li>
+    </ul>  
+</details>
+
+<details>
+    <summary>Conturi</summary>
+    <ul>
+        <li><a href="https://mail.google.com/mail/u/0/#inbox/" target="_blank" onclick="this.closest('details').open=false;">Gmail</a></li>
+        <li><a href="https://facebook.com/" target="_blank" onclick="this.closest('details').open=false;">Facebook</a></li>
+        <li><a href="https://web.whatsapp.com/" target="_blank" onclick="this.closest('details').open=false;">Whatsapp</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" onclick="this.closest('details').open=false;">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/" target="_blank" onclick="this.closest('details').open=false;">Instagram</a></li>
+        <li><a href="https://ro.pinterest.com/" target="_blank" onclick="this.closest('details').open=false;">Pinterest</a></li>
+        <li><a href="https://www.ejobs.ro/" target="_blank" onclick="this.closest('details').open=false;">eJobs</a></li>
+        <li><a href="https://www.bestjobs.eu/" target="_blank" onclick="this.closest('details').open=false;">BestJobs</a></li>
+    </ul>  
+</details>
+
+<details>
+    <summary>Stiri</summary>
+    <ul>
+        <li><a href="http://www.stiripesurse.ro/stirile-zilei/" target="_blank" onclick="this.closest('details').open=false;">Stiri pe surse</a></li>
+        <li><a href="https://www.g4media.ro/" target="_blank" onclick="this.closest('details').open=false;">G4media</a></li>
+        <li><a href="https://www.catavencii.ro/" target="_blank" onclick="this.closest('details').open=false;">Catavencii</a></li>
+        <li><a href="https://www.realitatea.net/" target="_blank" onclick="this.closest('details').open=false;">Realitatea</a></li>
+        <li><a href="https://www.mediafax.ro/" target="_blank" onclick="this.closest('details').open=false;">Mediafax</a></li>
+        <li><a href="https://www.biziday.ro/" target="_blank" onclick="this.closest('details').open=false;">Biziday</a></li>
+        <li><a href="https://rasunetul.ro/" target="_blank" onclick="this.closest('details').open=false;">Rasunetul</a></li>
+    </ul>
+</details>
+
+<details>
+    <summary>Comert</summary>
+    <ul>
+        <li><a href="https://www.emag.ro/" target="_blank" onclick="this.closest('details').open=false;">Emag</a></li>
+        <li><a href="https://www.aliexpress.com/home.htm" target="_blank" onclick="this.closest('details').open=false;">Aliexpress</a></li>
+        <li><a href="http://www.ebay.com/" target="_blank" onclick="this.closest('details').open=false;">Ebay</a></li>
+        <li><a href="http://www.temu.com/" target="_blank" onclick="this.closest('details').open=false;">Temu</a></li>
+        <li><a href="https://www.banggood.com/" target="_blank" onclick="this.closest('details').open=false;">Banggood</a></li>
+        <li><a href="https://www.trendyol.com/ro" target="_blank" onclick="this.closest('details').open=false;">Trendyol</a></li>
+        <li><a href="https://vinted.ro/" target="_blank" onclick="this.closest('details').open=false;">Vinted</a></li>
+        <li><a href="https://ghiseul.ro/" target="_blank" onclick="this.closest('details').open=false;">Ghiseul ro</a></li>
+        <li><a href="https://sameday.ro/trimite-colete/" target="_blank" onclick="this.closest('details').open=false;">Samedey</a></li>
+        <li><a href="https://www.eawb.ro/" target="_blank" onclick="this.closest('details').open=false;">Eawb</a></li>
+    </ul>
+</details>
+
+<details>
+    <summary>Turism</summary>
+    <ul>
+        <li><a href="https://www.booking.com/" target="_blank" onclick="this.closest('details').open=false;">Booking</a></li> 	
+        <li><a href="https://translate.google.ro/?hl=ro/" target="_blank" onclick="this.closest('details').open=false;">Traducere</a></li>
+        <li><a href="https://distanta.ro/" target="_blank" onclick="this.closest('details').open=false;">Distante auto</a></li>
+        <li><a href="https://www.wizzair.com/ro-ro/" target="_blank" onclick="this.closest('details').open=false;">Wizzair</a></li>
+        <li><a href="https://www.google.ro/maps/@47.1330124,24.4590956,13z" target="_blank" onclick="this.closest('details').open=false;">Google maps</a></li>
+        <li><a href="https://onthegomap.com/" target="_blank" onclick="this.closest('details').open=false;">Traseu fix</a></li>
+        <li><a href="http://bistrita-city.map2web.eu/" target="_blank" onclick="this.closest('details').open=false;">Strazi orase</a></li>
+        <li><a href="https://www.skylinewebcams.com/en/webcam/france/ile-de-france/paris/tour-eiffel.html" target="_blank" onclick="this.closest('details').open=false;">Webcams</a></li>
+        <li><a href="http://www.zumaballs.com/game-22.html" target="_blank" onclick="this.closest('details').open=false;">Zuma Games</a></li>
+        <li><a href="https://ortodox.ro/harta" target="_blank" onclick="this.closest('details').open=false;">Manastiri</a></li>
+    </ul>
+</details>
+
+<details>
+    <summary>Utilitati</summary>
+    <ul>
+        <li><a href="https://www.eon.ro/" target="_blank" onclick="this.closest('details').open=false;">EON</a></li> 	
+        <li><a href="https://factura.vodafone.ro/plata-mobil-fara-conectare/" target="_blank" onclick="this.closest('details').open=false;">Vodafone</a></li>
+        <li><a href="https://aquaserv.ro/istoric-consum/" target="_blank" onclick="this.closest('details').open=false;">Aquaserv 19</a></li>
+        <li><a href="https://www.novapg.ro/" target="_blank" onclick="this.closest('details').open=false;">Nova 19 26</a></li>
+        <li><a href="https://www.digi.ro/" target="_blank" onclick="this.closest('details').open=false;">Digi 10</a></li>
+        <li><a href="https://www.myelectrica.ro/" target="_blank" onclick="this.closest('details').open=false;">Ren 1 7 17 21</a></li>
+        <li><a href="https://clienti.bcrasigviata.ro//" target="_blank" onclick="this.closest('details').open=false;">Bcr 20</a></li>	
+        <li><a href="https://client.hidroelectrica.ro/autocitire/client/" target="_blank" onclick="this.closest('details').open=false;">Hidroelectrica</a></li>
+        <li><a href="https://fix.orange.ro/" target="_blank" onclick="this.closest('details').open=false;">Orange</a></li>
+    </ul>
+</details>
+
+<details>
+    <summary>Meteo</summary>
+    <ul>
+        <li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.34/47.104/24.7924&amp;map=cloudsAndPrecipitation~hourly~auto~sfc~none" target="_blank" onclick="this.closest('details').open=false;">Meteoblue</a></li>
+         	<li><a href="https://www.meteoblue.com/ro/vreme/h%C4%83r%C8%9Bi/%c5%9eieu-odorhei_rom%c3%a2nia_667235#coords=9.79/46.9941/24.661&amp;map=radar~radarMap~none~none~none/" target="_blank" onclick="this.closest('details').open=false;">Precipitatii</a>
+	        </li><li><a href="https://meteofor.ro/weather-paris-1623/2-weeks/" target="_blank" onclick="this.closest('details').open=false;">Paris</a></li>
+			<li><a href="https://meteofor.ro/weather-bistrita-3353/weekly/" target="_blank" onclick="this.closest('details').open=false;">Bistrita</a></li>
+            <li><a href="https://meteofor.ro/weather-morareni-335821/weekly/" target="_blank" onclick="this.closest('details').open=false;">Morareni</a></li>
+            <li><a href="https://meteofor.ro/weather-sieu-odorhei-17444/weekly/" target="_blank" onclick="this.closest('details').open=false;">Sieu odorhei</a></li>
+            <li><a href="https://meteofor.ro/weather-cluj-napoca-3357/" target="_blank" onclick="this.closest('details').open=false;">Cluj Napoca</a></li>
+            <li><a href="https://meteofor.ro/weather-targu-mures-3359/weekly/" target="_blank" onclick="this.closest('details').open=false;">Targu Mures</a></li>
+	        <li><a href="https://www.barcodesinc.com/generator/qr/" target="_blank" onclick="this.closest('details').open=false;">Barcode generator</a></li>
+
+	  
+  </ul>
+  <script>
+document.querySelectorAll('#submenu a').forEach(link => {
+    link.onclick = function () {
+        document.getElementById('submenu').hidden = true;
+    };
+});
+</script>
+</details>
+<details>
+<summary style="color:white; font-family:Arial; font-size:20px;">Diverse</summary>
+  <ul>
+      <li><a href="https://listen.streamon.fm/waai/" target="_blank" style="color:white;font-family:Arial;font-size:18px;">Country</a></li>
+	  <li><a href="https://www.arte.tv/ro/videos/cinema/" target="_blank" style="color:white;font-family:Arial;font-size:18px;">Cinema</a></li>	  
+      <li><a href="http://mayas-esprit.blogspot.ro/2011/04/retete-vegetariene-ovo-lacto.html" target="_blank" onclick="this.closest('details').open=false;">Retete</a></li>
+      <li><a href="https://pretulmeu.ro/" target="_blank" style="color:white;font-family:Arial;font-size:18px;">RCA</a></li>	
+	  <li><a href="https://chatgpt.com/" target="_blank" onclick="this.closest('details').open=false;">Chat GPT</a></li>
+      <li><a href="https://www.iloveimg.com/crop-image/" target="_blank" style="color:white;font-family:Arial;font-size:18px;">Crop image</a></li>
+      <li><a href="https://translateabook.com/staticrypt/" style="color:white;font-family:Arial;font-size:18px;">Crypt</a></li>
+      <li><a href="https://github.com/" target="_blank" onclick="this.closest('details').open=false;">Github</a></li>
+	  <li><a href="https://www.ilovepdf.com/" target="_blank" onclick="this.closest('details').open=false;">IlovePDF</a></li>  
+	  <li><a href="https://www.barcodesinc.com/generator/qr/" target="_blank" onclick="this.closest('details').open=false;">QR generator</a></li>
+	  <li><a href="https://www.drogoreanu.ro/tutorials/cap1.php/" target="_blank" onclick="this.closest('details').open=false;">HTML</a></li>
+  </ul></details>
+            <li><a href="https://www.google.com/" target="_blank" style="color:white; font-family:Arial; font-size:20px;">Google</a></li>
+            <li><a href="https://translate.google.ro/?sl=ro&amp;tl=en&amp;op=translate/" target="_blank" style="color:white; font-family:Arial; font-size:20px;">RO-EN</a></li>
+            <li><a href="https://translate.google.ro/?sl=ro&amp;tl=fr&amp;op=translate/" target="_blank" style="color:white; font-family:Arial; font-size:20px;">RO-FR</a></li>
+<li><a href="https://userutil2025.github.io/Fain/pensionare.html" target="_blank" style="color:white; font-family:Arial; font-size:20px;">Calcul an pensie</a></li>
+<a href="https://userutil2025.github.io/Fain/Paris.html" target="_blank" title="Paris" style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #27c471; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #228B22; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">P</a>
+<a href="https://docs.google.com/spreadsheets/d/1rLbONonkJ0iNME3abSytkPYlBGVdLUzr/edit?pli=1&gid=1950461381#gid=1950461381/" target="_blank" title="Auto" style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #27c471; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #228B22; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">A</a>
+<!--
+<button 
+  onclick="window.open('https://docs.google.com/spreadsheets/d/1rLbONonkJ0iNME3abSytkPYlBGVdLUzr/edit?gid=1950461381#gid=1950461381/', '_blank')"
+  style="position: float; bottom: 20px; left: 20px; padding: 12px 18px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+  Deschide Document
+</button>   -->
+<div id="toast" style="position: fixed; bottom: 20px; right: 20px; background: #333; color: #fff; padding: 12px 16px; border-radius: 6px; font-size: 15px; display: none;">
+</div>
+
+<div style="position: fixed; bottom: 20px; left: 270px;">
+    <button type="button" onclick="
+            var targetDate = new Date(&#39;2026-07-27&#39;);
+            var now = new Date();
+            var diff = targetDate - now;
+
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            var toast = document.getElementById(&#39;toast&#39;);
+            toast.innerHTML = &#39; &#39; + days + &#39; zile si &#39; + hours + &#39; ore &#39;;
+            toast.style.display = &#39;block&#39;;
+
+            setTimeout(function() {
+                toast.style.display = &#39;none&#39;;
+            }, 5000);
+        " style="
+            background-color: #cae4fa;
+            color: #000;
+            padding: 2;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;">
+        
+    </button>
+</div>
+
+
+
+
+<p id="rezultat"></p>
+<button onclick="afiseazaTimp()" style="
+        position:fixed;
+        bottom:30px;
+        LEFT:220px;
+        width:6px;
+        height:6px;
+        border:none;
+        border-radius:50%;
+        background:#cae4fa;
+        padding:0;
+        cursor:pointer;
+        z-index:9999;
+    ">
+</button>
+
+<script>
+function afiseazaTimp() {
+    var startDate = new Date('2026-07-18T17:00:00');
+    var now = new Date();
+
+    var diff = now - startDate;
+
+    var zile = Math.floor(diff / (800 * 60 * 60 * 24));
+    var ore = Math.floor((diff % (800 * 60 * 60 * 24)) / (800 * 60 * 60));
+
+    alert( zile + " zile trecute si " +  "ore");
+}
+</script>
+
+
+
+
+
+
+<script>
+document.querySelectorAll('#submenu a').forEach(link => {
+    link.onclick = function () {
+        document.getElementById('submenu').hidden = true;
+    };
+});
+</script><script>
+function afiseazaTimp() {
+    var startDate = new Date('2026-07-18T16:00:00');
+    var now = new Date();
+    var diff = now - startDate;
+    var zile = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var ore = Math.floor((diff % (1000 * 60 * 60 * 24)) / (800 * 60 * 60));
+    alert( zile + " zile trecute si " +  "ore");
+}
+</script>
+</body></html>
+ </ul>
+</details>
+</body>
+</html>
+<!--
+
+
+
+
+
+
+
+
+
+   </ul>
+</details>
+
+</body>
+</html>
+--->
