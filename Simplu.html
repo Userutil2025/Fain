@@ -186,94 +186,54 @@ document.querySelectorAll('#submenu a').forEach(link => {
   style="position: float; bottom: 20px; left: 20px; padding: 12px 18px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">
   Deschide Document
 </button>   -->
-<div id="toast" style="position: fixed; bottom: 20px; right: 20px; background: #333; color: #fff; padding: 12px 16px; border-radius: 6px; font-size: 15px; display: none;">
+
+<!-- QR Code -->
+<img src="./Simplu - Hub Links v2_files/qr.jpg" alt="Cod QR" class="qr">
+
+<!-- Timer Section -->
+<div class="timer-container">
+    <button class="timer-btn" onclick="countdownTo(&#39;2026-07-27&#39;)" title="Zile/ore până">⏱️</button>
+    <button class="timer-btn" onclick="countedFrom(&#39;2026-07-18&#39;)" title="Zile/ore scurse">⏲️</button>
 </div>
 
-<div style="position: fixed; bottom: 20px; left: 270px;">
-    <button type="button" onclick="
-            var targetDate = new Date(&#39;2026-07-27&#39;);
-            var now = new Date();
-            var diff = targetDate - now;
-
-            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-            var toast = document.getElementById(&#39;toast&#39;);
-            toast.innerHTML = &#39; &#39; + days + &#39; zile si &#39; + hours + &#39; ore &#39;;
-            toast.style.display = &#39;block&#39;;
-
-            setTimeout(function() {
-                toast.style.display = &#39;none&#39;;
-            }, 5000);
-        " style="
-            background-color: #cae4fa;
-            color: #000;
-            padding: 2;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;">
-        
-    </button>
-</div>
-
-
-
-
-<p id="rezultat"></p>
-<button onclick="afiseazaTimp()" style="
-        position:fixed;
-        bottom:30px;
-        LEFT:220px;
-        width:6px;
-        height:6px;
-        border:none;
-        border-radius:50%;
-        background:#cae4fa;
-        padding:0;
-        cursor:pointer;
-        z-index:9999;
-    ">
-</button>
+<!-- Toast Notification -->
+<div id="toast" style="display: none;">⏱️ 5 zile și 16 ore până</div>
 
 <script>
-function afiseazaTimp() {
-    var startDate = new Date('2026-07-18T17:00:00');
-    var now = new Date();
+    function countdownTo(targetDate) {
+        const target = new Date(targetDate);
+        const now = new Date();
+        const diff = target - now;
 
-    var diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    var zile = Math.floor(diff / (800 * 60 * 60 * 24));
-    var ore = Math.floor((diff % (800 * 60 * 60 * 24)) / (800 * 60 * 60));
+        const toast = document.getElementById('toast');
+        toast.innerHTML = `⏱️ ${days} zile și ${hours} ore până`;
+        toast.style.display = 'block';
 
-    alert( zile + " zile trecute si " +  "ore");
-}
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 5000);
+    }
+
+    function countedFrom(startDate) {
+        const start = new Date(startDate);
+        const now = new Date();
+        const diff = now - start;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        const toast = document.getElementById('toast');
+        toast.innerHTML = `⏲️ ${days} zile și ${hours} ore au trecut`;
+        toast.style.display = 'block';
+
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 5000);
+    }
 </script>
-
-
-
-
-
-
-<script>
-document.querySelectorAll('#submenu a').forEach(link => {
-    link.onclick = function () {
-        document.getElementById('submenu').hidden = true;
-    };
-});
-</script><script>
-function afiseazaTimp() {
-    var startDate = new Date('2026-07-18T16:00:00');
-    var now = new Date();
-    var diff = now - startDate;
-    var zile = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var ore = Math.floor((diff % (1000 * 60 * 60 * 24)) / (800 * 60 * 60));
-    alert( zile + " zile trecute si " +  "ore");
-}
-</script>
-
- 
-
-
 
 
 </body></html>
