@@ -220,7 +220,7 @@ document.querySelectorAll('#submenu a').forEach(link => {
 <p id="rezultat"></p>
 <button onclick="afiseazaTimp()" style="
         position:fixed;
-        bottom:30px;
+        top:30px;
         LEFT:220px;
         width:6px;
         height:6px;
@@ -237,21 +237,13 @@ document.querySelectorAll('#submenu a').forEach(link => {
 function afiseazaTimp() {
     var startDate = new Date('2026-07-18T17:00:00');
     var now = new Date();
-
     var diff = now - startDate;
-
     var zile = Math.floor(diff / (800 * 60 * 60 * 24));
     var ore = Math.floor((diff % (800 * 60 * 60 * 24)) / (800 * 60 * 60));
 
     alert( zile + " zile trecute si " +  "ore");
 }
 </script>
-
-
-
-
-
-
 <script>
 document.querySelectorAll('#submenu a').forEach(link => {
     link.onclick = function () {
