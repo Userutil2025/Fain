@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="ro"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <!-- Linia de mai jos asigură adaptarea perfectă pe ecranul telefonului -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="https://jsdelivr.net">
+    <link rel="icon" type="image/svg+xml" href="https://jsdelivr.net/">
     <title>Paris</title>
     <style>
         @keyframes wave {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 0; }
+            30% { background-position: 0 0; }
+            60% { background-position: 100px 0; }
         }
         
         body {
-            background: linear-gradient(180deg, #4a9d6f 0%, #2d7a52 50%, #4a9d6f 100%);
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%23206[...]
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="%231d[...]
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,70 Q300,40 600,70 T1200,70 L1200,120 L0,120 Z" fill="%2314[...]
+            /* Fundal modificat în verde mediu uniform */
+            background: #2e7d32; 
+        <!--    background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%231b5e20" opacity="0.3"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="%231b5e20" opacity="0.4"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,70 Q300,40 600,70 T1200,70 L1200,120 L0,120 Z" fill="%231b5e20" opacity="0.2"/></svg>');
             background-attachment: fixed;
-            background-repeat: repeat-x;
+            background-repeat: repeat-x; -->
             background-size: 100% 100px, 100% 100px, 100% 100px;
             background-position: 0 bottom, 0 calc(100% - 60px), 0 calc(100% - 30px);
             animation: wave 15s linear infinite;
@@ -42,19 +42,19 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 0;
-            background: rgba(138, 74, 74, 0.7);
+            width: 95px; /* Mărit ușor pentru a compensa rotunjirea marginilor */
+            height: 75px;
+            border-radius: 25px; /* Margini rotunjite aplicate */
+            background: #800020; /* Culoare vișinie (Burgundy) */
             color: white;
-            border-top: 3px solid #b8696f;
-            border-left: 3px solid #b8696f;
-            border-bottom: 3px solid #4a2a2a;
-            border-right: 3px solid #4a2a2a;
+            border-top: 3px solid #a31c3f;
+            border-left: 3px solid #a31c3f;
+            border-bottom: 3px solid #4a0012;
+            border-right: 3px solid #4a0012;
             font-weight: bold;
             text-decoration: none;
             font-family: Arial, sans-serif;
-            font-size: 18px;
+            font-size: 19px; /* Redus minimal pentru a preveni ieșirea textului din cercul rotunjit */
             transition: all 0.1s;
             cursor: pointer;
             box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), inset -1px -1px 0 rgba(0,0,0,0.3);
@@ -77,34 +77,34 @@
 <div class="button-container">
 
     <!-- BUTON: Hărți Paris general -->
-    <a href="https://goo.gl" target="_blank" class="button-link">
+    <a href="https://goo.gl/" target="_blank" class="button-link">
         H Concor
     </a>
 
-    <a href="https://goo.gl" target="_blank" class="button-link">
+    <a href="https://goo.gl/" target="_blank" class="button-link">
         Aeroport<br>5.45 7.35
     </a>
 
-    <a href="https://google.ro" target="_blank" class="button-link">
+    <a href="https://google.ro/" target="_blank" class="button-link">
         H Eiffel<br>8.10
     </a>
 
-    <a href="https://goo.gl" target="_blank" class="button-link">
+    <a href="https://goo.gl/" target="_blank" class="button-link">
         Ibis Beauv
     </a>
 
-    <a href="https://www.google.ro/maps/dir/Turnul+Eiffel,+Av.+Gustave+Eiffel,+75007+Paris,+Fran%C8%9Ba/Paris,+Fran%C5%A3a/@48.8589385,2.2646326,12z/data=!4m13!4m12!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddc[...]
+    <a href="https://www.google.ro/maps/dir/Turnul+Eiffel,+Av.+Gustave+Eiffel,+75007+Paris,+Fran%C8%9Ba/Paris,+Fran%C5%A3a/@48.8589385,2.2646326,12z/data=!4m13!4m12!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddc" target="_blank" class="button-link">
         Hărți Paris
     </a>
 
     <!-- BUTON: Traducere dedicată Română -> Franceză -->
-    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=fr&op=translate" target="_blank" class="button-link">
+    <a href="https://translate.google.ro/?hl=ro&amp;sl=ro&amp;tl=fr&amp;op=translate" target="_blank" class="button-link">
         Traducere<br>RO-FR
     </a>
     
-    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=en&op=translate" target="_blank" class="button-link">
+    <a href="https://translate.google.ro/?hl=ro&amp;sl=ro&amp;tl=en&amp;op=translate" target="_blank" class="button-link">
         Traducere<br>RO-EN
     </a>
 </div>
-</body>
-</html>
+
+</body></html>
