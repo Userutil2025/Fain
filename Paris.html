@@ -6,45 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="https://jsdelivr.net">
     <title>Paris</title>
+    <style>
+        @keyframes wave {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 0; }
+        }
+        
+        body {
+            background: linear-gradient(180deg, #1d3557 0%, #0a1929 50%, #1d3557 100%);
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%23164863" opacity="0.3"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="%230f3460" opacity="0.4"/></svg>'),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,70 Q300,40 600,70 T1200,70 L1200,120 L0,120 Z" fill="%23533483" opacity="0.2"/></svg>');
+            background-attachment: fixed;
+            background-repeat: repeat-x;
+            background-size: 100% 100px, 100% 100px, 100% 100px;
+            background-position: 0 bottom, 0 calc(100% - 60px), 0 calc(100% - 30px);
+            animation: wave 15s linear infinite;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px 10px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .button-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 90px;
+            height: 90px;
+            border-radius: 0;
+            background: #8a4a4a;
+            color: white;
+            border-top: 3px solid #b8696f;
+            border-left: 3px solid #b8696f;
+            border-bottom: 3px solid #4a2a2a;
+            border-right: 3px solid #4a2a2a;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: all 0.1s;
+            cursor: pointer;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), inset -1px -1px 0 rgba(0,0,0,0.3);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.2;
+            padding: 5px;
+        }
+        
+        .button-link:active {
+            transform: translate(1px, 1px);
+            box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3), inset -1px -1px 0 rgba(255,255,255,0.1);
+        }
+    </style>
 </head>
 
-<body style="background: #1d3557 url('https://unsplash.com') no-repeat center center fixed; background-size: cover; margin: 0; min-height: 100vh;">
+<body>
 
 <!-- Containerul inline aliniază butoanele automat în funcție de lățimea ecranului de telefon -->
-<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px 10px; max-width: 100%; box-sizing: border-box;">
+<div class="button-container">
 
-    <!-- BUTON NOU: Hărți Paris general -->
-
-
-    <a href="https://goo.gl" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #8a4a4a; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">
+    <!-- BUTON: Hărți Paris general -->
+    <a href="https://goo.gl" target="_blank" class="button-link">
         H Concor
     </a>
 
-    <a href="https://goo.gl" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #8a4a4a; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">
-        Aeroport 5.45 7.35
+    <a href="https://goo.gl" target="_blank" class="button-link">
+        Aeroport<br>5.45 7.35
     </a>
 
-    <a href="https://google.ro" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #8a4a4a; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">
-         H Eiffel 8.10
+    <a href="https://google.ro" target="_blank" class="button-link">
+        H Eiffel<br>8.10
     </a>
 
-    <a href="https://goo.gl" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-size: 23px; width: 90px; height: 90px; border-radius: 60%; background: #8a4a4a; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #2b2b2b, 0 12px 10px rgba(0,0,0,0.4);">
+    <a href="https://goo.gl" target="_blank" class="button-link">
         Ibis Beauv
     </a>
 
-    </a>
-    <a href="https://www.google.ro/maps/dir/Turnul+Eiffel,+Av.+Gustave+Eiffel,+75007+Paris,+Fran%C8%9Ba/Paris,+Fran%C5%A3a/@48.8589385,2.2646326,12z/data=!4m13!4m12!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!2m2!1d2.3513765!2d48.8575475?entry=ttu&g_ep=EgoyMDI2MDcwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #2a6f97; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #1a445d, 0 12px 10px rgba(0,0,0,0.4); text-align: center;">
+    <a href="https://www.google.ro/maps/dir/Turnul+Eiffel,+Av.+Gustave+Eiffel,+75007+Paris,+Fran%C8%9Ba/Paris,+Fran%C5%A3a/@48.8589385,2.2646326,12z/data=!4m13!4m12!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddc" target="_blank" class="button-link">
         Hărți Paris
     </a>
 
-    <!-- BUTON NOU: Traducere dedicată Română -> Franceză -->
-    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=fr&op=translate" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #2a6f97; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #1a445d, 0 12px 10px rgba(0,0,0,0.4); text-align: center;">
-        Traducere RO-FR
-		    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=en&op=translate" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 90px; height: 90px; border-radius: 60%; background: #2a6f97; color: white; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 4px solid #333; box-shadow: inset 0 4px 6px rgba(255,255,255,0.2), 0 8px 0 #1a445d, 0 12px 10px rgba(0,0,0,0.4); text-align: center;">
-        Traducere RO-EN
+    <!-- BUTON: Traducere dedicată Română -> Franceză -->
+    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=fr&op=translate" target="_blank" class="button-link">
+        Traducere<br>RO-FR
+    </a>
+    
+    <a href="https://translate.google.ro/?hl=ro&sl=ro&tl=en&op=translate" target="_blank" class="button-link">
+        Traducere<br>RO-EN
     </a>
 </div>
 </body>
 </html>
-
-
