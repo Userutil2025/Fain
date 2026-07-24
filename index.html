@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Puzzle Acvariu 5x5</title>
+    <title>Puzzle Video 5x5</title>
     <style>
+	<br>
         body {
             font-family: Arial, sans-serif;
-            /* Modificat fundalul într-o nuanță plăcută de verde închis */
             background: linear-gradient(135deg, #0f2b1d, #1a4a34);
             color: #fff;
             display: flex;
@@ -16,17 +17,41 @@
             min-height: 100vh;
             margin: 0;
         }
-        h1 { margin-bottom: 5px; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        h1 { margin-bottom: 25px; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         
-        /* Stil pentru zona cronometrului */
+        /* Containerul principal care așază elementele pe orizontală */
+        .joc-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px; /* Spațiul dintre butoane, puzzle și cronometru */
+            min-width: 800px;
+        }
+
+        /* Zona din stânga pentru butoane (aranjate vertical, unul sub altul) */
+        .zona-stanga {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Spațiul vertical dintre cele două butoane */
+            align-items: flex-end; /* Aliniere la marginea dinspre puzzle */
+        }
+
+        /* Zona din dreapta pentru cronometru */
+        .zona-dreapta {
+            width: 180px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
         #cronometru {
             font-size: 20px;
             font-weight: bold;
-            margin-bottom: 15px;
             background: rgba(0, 0, 0, 0.4);
-            padding: 5px 15px;
+            padding: 10px 20px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
         }
 
         .p-container {
@@ -38,9 +63,8 @@
             overflow: hidden;
             background: #222;
         }
-        /* Clipul video principal ascuns, folosit doar ca sursă textură */
         #video-sursa { display: none; }
-        /* Grila de canvas-uri */
+        
         .puzzle-grid {
             display: grid;
             grid-template-columns: repeat(5, 100px);
@@ -65,22 +89,38 @@
             box-shadow: 0 0 15px #ff0055;
             z-index: 10;
         }
+        
+        /* Stil general pentru butoane */
         button {
-            margin-top: 20px;
-            padding: 12px 24px;
-            font-size: 16px;
+            width: 160px; /* Dimensiune fixă egală pentru ambele butoane */
+            padding: 12px 15px;
+            font-size: 15px;
             font-weight: bold;
-            background: #00d2ff;
             border: none;
             border-radius: 25px;
-            color: #111;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,210,255,0.4);
             transition: all 0.2s;
+            text-align: center;
         }
-        button:hover { background: #fff; transform: translateY(-2px); }
+        
+        /* Stil buton Amestecă */
+        .btn-amesteca {
+            background: #00d2ff;
+            color: #111;
+            box-shadow: 0 4px 15px rgba(0,210,255,0.4);
+        }
+        .btn-amesteca:hover { background: #fff; transform: translateY(-2px); }
+
+        /* Stil buton Oprește */
+        .btn-opreste {
+            background: #ff3b30;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255,59,48,0.4);
+        }
+        .btn-opreste:hover { background: #ff453a; transform: translateY(-2px); }
+        
         #mesaj {
-            margin-top: 15px;
+            margin-top: 25px;
             font-size: 18px;
             font-weight: bold;
             color: #00ff88;
@@ -89,20 +129,24 @@
         }
     </style>
 </head>
+<br>
 <body>
+    <div class="joc-container">
+        <!-- Butonul Oprește este așezat structural sub butonul Amestecă -->
+        <div class="zona-stanga">
+            <button class="btn-amesteca" onclick="amestecaPuzzle()">Amestecă</button>
+            <button class="btn-opreste" onclick="opresteJocul()">Oprește Jocul</button>
+        </div>
+        <div class="p-container">
+            <video id="video-sursa" autoplay loop muted playsinline src="acvariu.mp4"></video>
+            <div class="puzzle-grid" id="grila"></div>
+        </div>
 
-    <h1>Puzzle Acvariu 5x5</h1>
-    
-    <!-- Elementul vizual pentru cronometru -->
-    <div id="cronometru">Timp: 00:00</div>
-    
-    <div class="p-container">
-        <!-- Înlocuiește link-ul de la 'src' cu clipul tău când îl ai salvat în același dosar -->
-        <video id="video-sursa" autoplay loop muted playsinline crossorigin="anonymous" src="acvariu.mp4"></video>
-        <div class="puzzle-grid" id="grila"></div>
+        <div class="zona-dreapta">
+            <div id="cronometru">Timp: 00:00</div>
+        </div>
     </div>
 
-    <button onclick="amestecaPuzzle()">Amestecă Piesele</button>
     <div id="mesaj"></div>
 
     <script>
@@ -116,12 +160,10 @@
         let piese = [];
         let piesaSelectata = null;
 
-        // Variabile pentru gestionarea timpului
         let timpInceput = null;
         let intervalCronometru = null;
         let jocActiv = false;
 
-        // Creăm cele 25 de piese (celule)
         function creeazaPuzzle() {
             grila.innerHTML = '';
             piese = [];
@@ -129,74 +171,59 @@
                 let canvas = document.createElement('canvas');
                 canvas.width = DIM_PIESA;
                 canvas.height = DIM_PIESA;
-                canvas.dataset.indexId = i; // Poziția corectă, originală
+                
+                canvas.dataset.origX = (i % DIM_GRID) * DIM_PIESA;
+                canvas.dataset.origY = Math.floor(i / DIM_GRID) * DIM_PIESA;
+                
+                canvas.style.order = i;
                 
                 canvas.addEventListener('click', aduLaClick);
-                piese.push({
-                    element: canvas,
-                    idOriginal: i,
-                    idCurent: i
-                });
+                grila.appendChild(canvas);
+                piese.push(canvas);
             }
-            afiseazaPiese();
         }
 
-        function afiseazaPiese() {
-            piese.sort((a, b) => a.idCurent - b.idCurent);
-            piese.forEach(p => grila.appendChild(p.element));
-        }
-
-        // Desenăm bucățica de video pe fiecare piesă, cadru cu cadru
         function randeazaVideo() {
-            piese.forEach(pieseObj => {
-                const canvas = pieseObj.element;
+            piese.forEach(canvas => {
                 const ctx = canvas.getContext('2d');
-                
-                const xOrig = (pieseObj.idOriginal % DIM_GRID) * DIM_PIESA;
-                const yOrig = Math.floor(pieseObj.idOriginal / DIM_GRID) * DIM_PIESA;
+                const xOrig = parseFloat(canvas.dataset.origX);
+                const yOrig = parseFloat(canvas.dataset.origY);
                 
                 ctx.drawImage(video, xOrig, yOrig, DIM_PIESA, DIM_PIESA, 0, 0, DIM_PIESA, DIM_PIESA);
             });
             requestAnimationFrame(randeazaVideo);
         }
 
-        // Logica de click și schimb de piese
         function aduLaClick() {
-            if (!jocActiv) return; // Dezactivează click-urile dacă jocul nu a fost pornit prin amestecare
+            if (!jocActiv) return; 
 
-            let piesaApasata = piese.find(p => p.element === this);
-            
             if (piesaSelectata === null) {
-                piesaSelectata = piesaApasata;
+                piesaSelectata = this;
                 this.classList.add('selectat');
             } else {
-                if (piesaSelectata !== piesaApasata) {
-                    let temp = piesaSelectata.idCurent;
-                    piesaSelectata.idCurent = piesaApasata.idCurent;
-                    piesaApasata.idCurent = temp;
+                if (piesaSelectata !== this) {
+                    let tempOrder = piesaSelectata.style.order;
+                    piesaSelectata.style.order = this.style.order;
+                    this.style.order = tempOrder;
                     
-                    afiseazaPiese();
                     verificaCastig();
                 }
-                piesaSelectata.element.classList.remove('selectat');
+                piesaSelectata.classList.remove('selectat');
                 piesaSelectata = null;
             }
         }
 
-        // Pornirea cronometrului
         function pornesteCronometru() {
             clearInterval(intervalCronometru);
             timpInceput = Date.now();
             intervalCronometru = setInterval(actualizeazaCronometru, 1000);
         }
 
-        // Calcularea și afișarea timpului scurs
         function actualizeazaCronometru() {
             let timpScurs = Math.floor((Date.now() - timpInceput) / 1000);
             cronometruElement.innerText = "Timp: " + formateazaTimp(timpScurs);
         }
 
-        // Transformă secundele în format MM:SS
         function formateazaTimp(secunde) {
             let minute = Math.floor(secunde / 60);
             let sec = secunde % 60;
@@ -206,35 +233,51 @@
         function amestecaPuzzle() {
             mesaj.innerText = "";
             jocActiv = true;
-            
-            // Pornim măsurarea timpului la amestecare
             pornesteCronometru();
 
             let pozitii = Array.from({length: 25}, (_, i) => i);
-            pozitii.sort(() => Math.random() - 0.5);
             
-            piese.forEach((p, i) => {
-                p.idCurent = pozitii[i];
+            for (let i = pozitii.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pozitii[i], pozitii[j]] = [pozitii[j], pozitii[i]];
+            }
+            
+            piese.forEach((piesa, i) => {
+                piesa.style.order = pozitii[i];
+                piesa.classList.remove('selectat');
             });
-            afiseazaPiese();
+            piesaSelectata = null;
+        }
+
+        function opresteJocul() {
+            jocActiv = false;
+            clearInterval(intervalCronometru); 
+            
+            piese.forEach((piesa, index) => {
+                piesa.style.order = index;
+                piesa.classList.remove('selectat');
+            });
+            
+            if(piesaSelectata) piesaSelectata = null;
+            mesaj.innerText = "Jocul a fost oprit.";
+            mesaj.style.color = "#ff3b30"; 
         }
 
         function verificaCastig() {
-            let castigat = piese.every(p => p.idOriginal === p.idCurent);
+            let castigat = piese.every((piesa, index) => parseInt(piesa.style.order) === index);
             if (castigat && jocActiv) {
                 jocActiv = false;
-                clearInterval(intervalCronometru); // Oprim cronometrul
-                
+                clearInterval(intervalCronometru); 
                 let timpFinal = Math.floor((Date.now() - timpInceput) / 1000);
                 mesaj.innerText = `Felicitări! Ai rezolvat puzzle-ul în ${formateazaTimp(timpFinal)}! 🎉`;
-            }
-        }
-
-        video.addEventListener('play', () => {
-            randeazaVideo();
-        });
-
+                mesaj.style.color = "#00ff88";             }          }
         creeazaPuzzle();
+        video.addEventListener('play', () => {
+            requestAnimationFrame(randeazaVideo);
+        });
     </script>
 </body>
 </html>
+
+
+
