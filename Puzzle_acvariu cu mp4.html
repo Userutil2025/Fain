@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle Acvariu 5x5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Modificat fundalul într-o nuanță plăcută de verde închis */
+            background: linear-gradient(135deg, #0f2b1d, #1a4a34);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 { margin-bottom: 5px; font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        
+        /* Stil pentru zona cronometrului */
+        #cronometru {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .p-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #222;
+        }
+        /* Clipul video principal ascuns, folosit doar ca sursă textură */
+        #video-sursa { display: none; }
+        /* Grila de canvas-uri */
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            grid-template-rows: repeat(5, 100px);
+            width: 500px;
+            height: 500px;
+        }
+        canvas {
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.1s, border-color 0.2s;
+        }
+        canvas:hover {
+            border-color: #00d2ff;
+            transform: scale(0.98);
+        }
+        canvas.selectat {
+            border: 3px solid #ff0055 !important;
+            box-shadow: 0 0 15px #ff0055;
+            z-index: 10;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #00d2ff;
+            border: none;
+            border-radius: 25px;
+            color: #111;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,210,255,0.4);
+            transition: all 0.2s;
+        }
+        button:hover { background: #fff; transform: translateY(-2px); }
+        #mesaj {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff88;
+            height: 25px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Puzzle Acvariu 5x5</h1>
+    
+    <!-- Elementul vizual pentru cronometru -->
+    <div id="cronometru">Timp: 00:00</div>
+    
+    <div class="p-container">
+        <!-- Înlocuiește link-ul de la 'src' cu clipul tău când îl ai salvat în același dosar -->
+        <video id="video-sursa" autoplay loop muted playsinline crossorigin="anonymous" src="acvariu.mp4"></video>
+        <div class="puzzle-grid" id="grila"></div>
+    </div>
+
+    <button onclick="amestecaPuzzle()">Amestecă Piesele</button>
+    <div id="mesaj"></div>
+
+    <script>
+        const video = document.getElementById('video-sursa');
+        const grila = document.getElementById('grila');
+        const mesaj = document.getElementById('mesaj');
+        const cronometruElement = document.getElementById('cronometru');
+        
+        const DIM_GRID = 5;
+        const DIM_PIESA = 100;
+        let piese = [];
+        let piesaSelectata = null;
+
+        // Variabile pentru gestionarea timpului
+        let timpInceput = null;
+        let intervalCronometru = null;
+        let jocActiv = false;
+
+        // Creăm cele 25 de piese (celule)
+        function creeazaPuzzle() {
+            grila.innerHTML = '';
+            piese = [];
+            for (let i = 0; i < DIM_GRID * DIM_GRID; i++) {
+                let canvas = document.createElement('canvas');
+                canvas.width = DIM_PIESA;
+                canvas.height = DIM_PIESA;
+                canvas.dataset.indexId = i; // Poziția corectă, originală
+                
+                canvas.addEventListener('click', aduLaClick);
+                piese.push({
+                    element: canvas,
+                    idOriginal: i,
+                    idCurent: i
+                });
+            }
+            afiseazaPiese();
+        }
+
+        function afiseazaPiese() {
+            piese.sort((a, b) => a.idCurent - b.idCurent);
+            piese.forEach(p => grila.appendChild(p.element));
+        }
+
+        // Desenăm bucățica de video pe fiecare piesă, cadru cu cadru
+        function randeazaVideo() {
+            piese.forEach(pieseObj => {
+                const canvas = pieseObj.element;
+                const ctx = canvas.getContext('2d');
+                
+                const xOrig = (pieseObj.idOriginal % DIM_GRID) * DIM_PIESA;
+                const yOrig = Math.floor(pieseObj.idOriginal / DIM_GRID) * DIM_PIESA;
+                
+                ctx.drawImage(video, xOrig, yOrig, DIM_PIESA, DIM_PIESA, 0, 0, DIM_PIESA, DIM_PIESA);
+            });
+            requestAnimationFrame(randeazaVideo);
+        }
+
+        // Logica de click și schimb de piese
+        function aduLaClick() {
+            if (!jocActiv) return; // Dezactivează click-urile dacă jocul nu a fost pornit prin amestecare
+
+            let piesaApasata = piese.find(p => p.element === this);
+            
+            if (piesaSelectata === null) {
+                piesaSelectata = piesaApasata;
+                this.classList.add('selectat');
+            } else {
+                if (piesaSelectata !== piesaApasata) {
+                    let temp = piesaSelectata.idCurent;
+                    piesaSelectata.idCurent = piesaApasata.idCurent;
+                    piesaApasata.idCurent = temp;
+                    
+                    afiseazaPiese();
+                    verificaCastig();
+                }
+                piesaSelectata.element.classList.remove('selectat');
+                piesaSelectata = null;
+            }
+        }
+
+        // Pornirea cronometrului
+        function pornesteCronometru() {
+            clearInterval(intervalCronometru);
+            timpInceput = Date.now();
+            intervalCronometru = setInterval(actualizeazaCronometru, 1000);
+        }
+
+        // Calcularea și afișarea timpului scurs
+        function actualizeazaCronometru() {
+            let timpScurs = Math.floor((Date.now() - timpInceput) / 1000);
+            cronometruElement.innerText = "Timp: " + formateazaTimp(timpScurs);
+        }
+
+        // Transformă secundele în format MM:SS
+        function formateazaTimp(secunde) {
+            let minute = Math.floor(secunde / 60);
+            let sec = secunde % 60;
+            return (minute < 10 ? "0" : "") + minute + ":" + (sec < 10 ? "0" : "") + sec;
+        }
+
+        function amestecaPuzzle() {
+            mesaj.innerText = "";
+            jocActiv = true;
+            
+            // Pornim măsurarea timpului la amestecare
+            pornesteCronometru();
+
+            let pozitii = Array.from({length: 25}, (_, i) => i);
+            pozitii.sort(() => Math.random() - 0.5);
+            
+            piese.forEach((p, i) => {
+                p.idCurent = pozitii[i];
+            });
+            afiseazaPiese();
+        }
+
+        function verificaCastig() {
+            let castigat = piese.every(p => p.idOriginal === p.idCurent);
+            if (castigat && jocActiv) {
+                jocActiv = false;
+                clearInterval(intervalCronometru); // Oprim cronometrul
+                
+                let timpFinal = Math.floor((Date.now() - timpInceput) / 1000);
+                mesaj.innerText = `Felicitări! Ai rezolvat puzzle-ul în ${formateazaTimp(timpFinal)}! 🎉`;
+            }
+        }
+
+        video.addEventListener('play', () => {
+            randeazaVideo();
+        });
+
+        creeazaPuzzle();
+    </script>
+</body>
+</html>
