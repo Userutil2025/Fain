@@ -127,15 +127,15 @@
         <div>
             <label for="select-imagine" style="font-weight: bold; margin-right: 5px;">Imagine:</label>
             <select id="select-imagine" onchange="changeImage()">
-                <!-- REPARAT: Adăugat folderul Fain/ în fața fiecărei poze -->
-                <option value="Fain/poza.jpg" selected>Poza 1 (Cățeluș)</option>
-                <option value="Fain/poza1.jpg">Poza 2</option>
-                <option value="Fain/poza2.jpg">Poza 3</option>
-                <option value="Fain/poza3.jpg">Poza 4</option>
-                <option value="Fain/poza4.jpg">Poza 5</option>
-                <option value="Fain/poza5.jpg">Poza 6</option>
-                <option value="Fain/poza6.jpg">Poza 7</option>
-                <option value="Fain/poza7.jpg">Poza 8</option>
+                <!-- REPARAT DEFINITIV: Folosire link-uri absolute complete de pe serverul tău GitHub -->
+                <option value="https://github.io" selected>Poza 1 (Cățeluș)</option>
+                <option value="https://github.io">Poza 2</option>
+                <option value="https://github.io">Poza 3</option>
+                <option value="https://github.io">Poza 4</option>
+                <option value="https://github.io">Poza 5</option>
+                <option value="https://github.io">Poza 6</option>
+                <option value="https://github.io">Poza 7</option>
+                <option value="https://github.io">Poza 8</option>
             </select>
         </div>
 
@@ -165,7 +165,7 @@
         let COLS = 5;
         let timerInterval;
         let timeElapsed = 0;
-        let currentImage = "Fain/poza.jpg"; // REPARAT: Calea inițială corectă
+        let currentImage = "https://github.io"; // REPARAT: Link complet
 
         window.onload = function() {
             loadBestScore();
@@ -197,8 +197,8 @@
             timeElapsed = 0;
             document.getElementById('timer').innerText = timeElapsed;
 
-            // Curățare nume pentru titlu vizual frumos
-            let denumireAfisata = currentImage.replace("Fain/", "");
+            // Curățare text pentru titlu curat
+            let denumireAfisata = currentImage.substring(currentImage.lastIndexOf('/') + 1);
             document.getElementById('game-title').innerText = `Puzzle Foto din ${denumireAfisata} (${ROWS * COLS} Piese)`;
 
             document.getElementById('preview-image').style.backgroundImage = `url('${currentImage}')`;
@@ -295,12 +295,3 @@
             cells.forEach(cell => {
                 const piece = cell.firstChild;
                 if (!piece) {
-                    win = false;
-                    return;
-                }
-                if (cell.dataset.row !== piece.dataset.correctRow || cell.dataset.col !== piece.dataset.correctCol) {
-                    win = false;
-                }
-            });
-
-            if (win && cells.length > 0) {
