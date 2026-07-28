@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Puzzle Foto Dinamic</title>
     <style>
-        /* Fundal general întunecat și odihnitor */
         body {
             background-color: #1e222b;
             color: #f3f4f6;
@@ -20,7 +19,6 @@
             color: #ffffff;
         }
 
-        /* Panoul de sus stilizat modern */
         #top-panel {
             background-color: #282c34;
             border: 1px solid #3f4451;
@@ -33,7 +31,6 @@
             margin-bottom: 20px;
         }
 
-        /* Liste derulante (select) optimizate vizual */
         select {
             background-color: #353b48;
             color: #ffffff;
@@ -50,7 +47,6 @@
             border-color: #4cd137;
         }
 
-        /* Butonul de Reset verde */
         #top-panel button {
             background-color: #27ae60;
             color: white;
@@ -66,14 +62,12 @@
             background-color: #2ecc71;
         }
 
-        /* Containerul principal al jocului */
         #game-container {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        /* Fundal închis pentru zona grid-ului din stânga */
         #board {
             width: 400px;
             height: 400px;
@@ -87,7 +81,6 @@
             box-sizing: border-box;
         }
 
-        /* Zona centrală cu Modelul mic */
         #middle-preview {
             display: flex;
             flex-direction: column;
@@ -102,7 +95,6 @@
             background-position: center;
         }
 
-        /* Zona din dreapta unde stau piesele amestecate */
         #pieces-pool {
             width: 400px;
             height: 400px;
@@ -135,13 +127,15 @@
         <div>
             <label for="select-imagine" style="font-weight: bold; margin-right: 5px;">Imagine:</label>
             <select id="select-imagine" onchange="changeImage()">
-                <option value="poza1.jpg" selected>Poza 1</option>
-                <option value="poza2.jpg">Poza 2</option>
-                <option value="poza3.jpg">Poza 3</option>
-                <option value="poza4.jpg">Poza 4</option>
-                <option value="poza5.jpg">Poza 5</option>
-                <option value="poza6.jpg">Poza 6</option>
-                <option value="poza7.jpg">Poza 7</option>
+                <!-- REPARAT: Adăugat folderul Fain/ în fața fiecărei poze -->
+                <option value="Fain/poza.jpg" selected>Poza 1 (Cățeluș)</option>
+                <option value="Fain/poza1.jpg">Poza 2</option>
+                <option value="Fain/poza2.jpg">Poza 3</option>
+                <option value="Fain/poza3.jpg">Poza 4</option>
+                <option value="Fain/poza4.jpg">Poza 5</option>
+                <option value="Fain/poza5.jpg">Poza 6</option>
+                <option value="Fain/poza6.jpg">Poza 7</option>
+                <option value="Fain/poza7.jpg">Poza 8</option>
             </select>
         </div>
 
@@ -171,7 +165,7 @@
         let COLS = 5;
         let timerInterval;
         let timeElapsed = 0;
-        let currentImage = "poza1.jpg"; // Imaginea de start implicită
+        let currentImage = "Fain/poza.jpg"; // REPARAT: Calea inițială corectă
 
         window.onload = function() {
             loadBestScore();
@@ -192,7 +186,6 @@
             startGame();
         }
 
-        // Noua funcție care schimbă poza în mod dinamic în tot jocul
         function changeImage() {
             const selectImagine = document.getElementById('select-imagine');
             currentImage = selectImagine.value;
@@ -204,10 +197,10 @@
             timeElapsed = 0;
             document.getElementById('timer').innerText = timeElapsed;
 
-            // Actualizează titlul jocului cu numele pozei curente
-            document.getElementById('game-title').innerText = `Puzzle Foto din ${currentImage} (${ROWS * COLS} Piese)`;
+            // Curățare nume pentru titlu vizual frumos
+            let denumireAfisata = currentImage.replace("Fain/", "");
+            document.getElementById('game-title').innerText = `Puzzle Foto din ${denumireAfisata} (${ROWS * COLS} Piese)`;
 
-            // Schimbă poza modelului din centru
             document.getElementById('preview-image').style.backgroundImage = `url('${currentImage}')`;
 
             const board = document.getElementById('board');
@@ -248,7 +241,6 @@
                     piece.dataset.correctRow = r;
                     piece.dataset.correctCol = c;
 
-                    // Setarea imaginii selectate dinamice pe piese:
                     piece.style.backgroundImage = `url('${currentImage}')`;
                     piece.style.backgroundSize = `${COLS * 100}% ${ROWS * 100}%`;
 
@@ -303,3 +295,12 @@
             cells.forEach(cell => {
                 const piece = cell.firstChild;
                 if (!piece) {
+                    win = false;
+                    return;
+                }
+                if (cell.dataset.row !== piece.dataset.correctRow || cell.dataset.col !== piece.dataset.correctCol) {
+                    win = false;
+                }
+            });
+
+            if (win && cells.length > 0) {
