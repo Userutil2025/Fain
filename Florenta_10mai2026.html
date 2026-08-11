@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f42c.svg">
+<title>Florenta</title>
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --surface: rgba(155, 152, 247, 0.94);
+      --surface-strong: #ffbdf9;
+      --text: #1e1a17;
+      --muted: #6d5f54;
+      --line: rgba(60, 52, 33, 0.12);
+      --accent: #aa3f22;
+      --accent-dark: #7e2c17;
+      --shadow: 0 18px 45px rgba(88, 49, 28, 0.12);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(149, 126, 76, 0.18), transparent 34%),
+        radial-gradient(circle at top right, rgba(163, 84, 50, 0.18), transparent 30%),
+        linear-gradient(180deg, #fbf4ea 0%, var(--bg) 100%);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(100%, 400px);
+      margin: 0 auto;
+      padding: 18px 14px 36px;
+    }
+
+    .hero {
+      background: linear-gradient(160deg, rgba(255, 248, 239, 0.95), rgba(248, 232, 215, 0.9));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      position: sticky;
+      top: 10px;
+      backdrop-filter: blur(10px);
+      z-index: 5;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 8vw, 2.5rem);
+      line-height: 1;
+    }
+
+    .lead {
+      margin: 12px 0 16px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .search {
+      width: 90%;
+      border: 1px solid rgba(125, 76, 52, 0.18);
+      background: var(--surface-strong);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .search:focus {
+      border-color: rgba(150, 63, 34, 0.5);
+      box-shadow: 0 0 0 4px rgba(170, 63, 34, 0.12);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.3;
+    }
+
+    .type {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 899px;
+      background: rgba(150, 63, 34, 0.08);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .address {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      flex: 1 1 280px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.96rem;
+      transition: transform 0.16s ease, opacity 0.16s ease, background 0.16s ease;
+    }
+
+    .button:active {
+      transform: scale(0.98);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button-secondary {
+      background: rgba(30, 26, 23, 0.06);
+      color: var(--text);
+    }
+
+    .button:hover {
+      opacity: 0.94;
+    }
+
+    .empty {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 18px;
+      border: 1px dashed rgba(125, 76, 52, 0.25);
+    }
+
+    footer {
+      margin-top: 20px;
+      padding: 0 4px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    @media (min-width: 481px) {
+      .page {
+        padding-top: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+        <article class="card" data-search="museo degli innocenti piazza santissima annunziata brunelleschi">
+           <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/KaX5NvZTc3EFxx6NA">Aeroport Bologna 12.40 / 13.30</a>
+          <br>		
+           <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/z8yPJ3jo4yLYVHYGA">Hotel Tourist House  15</a>
+          <br>
+           <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/Hotel+Tourist+House,+Via+della+Scala,+1,+50123+Firenze+FI,+Italy/Cathedral+of+Santa+Maria+del+Fiore,+Piazza+del+Duomo,+50122+Firenze+FI,+Italy/@43.7731005,11.2497218,17z/data=!3m2!4b1!5s0x132a56abd8042e8b:0x52a830a4c3fb2af6!4m14!4m13!1m5!1m1!1s0x132a56a963408a7b:0x992d9426bbc11756!2m2!1d11.2486333!2d43.7732508!1m5!1m1!1s0x132a5403bfe22ff5:0x5591438487aaf1f5!2m2!1d11.2559602!2d43.773145!3e2?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D">_Catedrala  3:45 pm__ </a>
+          <br>		
+		  <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+dell%27Opera+del+Duomo%2C+Piazza+del+Duomo+9%2C+50122+Firenze+FI%2C+Italia">Opera Duomo Museum</a>
+		  
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+Nazionale+del+Bargello%2C+Via+del+Proconsolo+4%2C+50122+Firenze+FI%2C+Italia">Museo Nazionale Bargello max 18</a>
+		          <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+di+Palazzo+Vecchio%2C+Piazza+della+Signoria%2C+50122+Firenze+FI%2C+Italia">7 Museo Palatu Vechi 9:15</a>
+	      <br>
+            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/PEaPS2hCAkroFKj5A">Museul di Orsan Michelle</a>
+			    <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/bZz4WcJZd2BVucEn7">Palato strozi florenta</a>	  
+			      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+di+Palazzo+Davanzati%2C+Via+Porta+Rossa+13%2C+50123+Firenze+FI%2C+Italia">Museo di Palazzo Davanzati</a>	 
+      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+Horne%2C+Via+de%27+Benci+6%2C+50122+Firenze+FI%2C+Italia">Museo Horne</a>
+      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/NTCuAKmRr9tJGfzd9">Biserica Santa Croce max 17:30</a>
+      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Casa+Buonarroti%2C+Via+Ghibellina+70%2C+50122+Firenze+FI%2C+Italia">Casa Buonarroti</a>
+	          <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Palazzo+Pitti%2C+Piazza+de%27+Pitti+1%2C+50125+Firenze+FI%2C+Italia">8 Daci Palazzo Pitti 9</a>
+		  				  		          <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Galleria+Palatina%2C+Piazza+de%27+Pitti+1%2C+50125+Firenze+FI%2C+Italia">Galleria Palatina</a>
+   <br> 
+         <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+delle+Porcellane%2C+Piazza+de%27+Pitti+1%2C+50125+Firenze+FI%2C+Italia">Museo delle Porcellane</a>
+<br>
+           <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Galleria+degli+Uffizi%2C+Piazzale+degli+Uffizi+6%2C+50122+Firenze+FI%2C+Italia">Galerie de arta Uffizi 15</a>
+      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Palazzo+Medici+Riccardi%2C+Via+Camillo+Cavour+3%2C+50129+Firenze+FI%2C+Italia">9 Museo Palat Medici Ricardi</a>				 
+      <br> 
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Cappelle+Medicee%2C+Piazza+di+Madonna+degli+Aldobrandini+6%2C+50123+Firenze+FI%2C+Italia">Cappelle Medicee</a>				  
+	      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/zZ55SkeTuABS5JPT7">Biserica San Lorenzo</a>			  
+	    <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Opificio+delle+Pietre+Dure/@43.776166,11.2563175,17z/data=!3m1!4b1!4m6!3m5!1s0x132a5404ba5e4bb5:0x7e1c3b08d13e780!8m2!3d43.7761622!4d11.2588924!16s%2Fm%2F03m3w0t?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D">Museo dell'Opificio Pietre</a> 			  
+          <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Galleria+dell%27Accademia%2C+Via+Ricasoli+58%2F60%2C+50129+Firenze+FI%2C+Italia">Galerie dell'Accademia 15</a>				  
+	      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+degli+Innocenti%2C+Piazza+della+Santissima+Annunziata+12%2C+50121+Firenze+FI%2C+Italia">Museo degli Innocenti</a>			  
+			         <br> 
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Museo+di+San+Marco%2C+Piazza+San+Marco+3%2C+50121+Firenze+FI%2C+Italia">Museo di San Marco</a>  				
+		          <br>
+		          <br> 
+		 	      <br>
+           <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://meteofor.ro/weather-florence-3537/weekly/">_ Meteo Florenta _</a>  
+		              <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://www.meteoprog.com/ro/weather/Florence/">_ Meteo 2 Florenta _</a>  
+				      <br>
+					            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://listen.streamon.fm/waai">_ Country _</a> 
+					  				      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/WpYgsuyjFb16ktCi8">_ Il Mercato Firenze _</a>
+	        <br>		  
+		        <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/EBrgcuXsSTTTcdcDA">_ B O L O G N A _</a>	  
+		  
+	        <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/XhT6gqdM3e6ouSDL9">_ Piata Michelangelo _</a>
+    <br>   
+	<a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/aJyixCggBuuXPi2W8"> _Arme Museo Stibbert _</a>
+      <br>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/R933CaUcMJuk6Rev8">_ Capella Brancacci _</a>
+		  
+	      <br>
+  </main>
+  <script>
+    const input = document.getElementById('search');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const visibleCount = document.getElementById('visible-count');
+    const emptyState = document.getElementById('empty-state');
+    function updateList() {
+      const term = input.value.trim().toLowerCase();
+      let count = 0;
+      cards.forEach((card) => {
+        const haystack = `${card.innerText} ${card.dataset.search}`.toLowerCase();
+        const match = haystack.includes(term);
+        card.style.display = match ? '' : 'none';
+        if (match) count += 1;      });
+      visibleCount.textContent = `${count} muzee afisate`;
+      emptyState.style.display = count === 0 ? 'block' : 'none';    }
+    input.addEventListener('input', updateList);
+    updateList();
+  </script>
+</body>
+</html>
