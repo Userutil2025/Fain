@@ -180,7 +180,7 @@ document.querySelectorAll('#submenu a').forEach(link => {
 	  <li><a href="https://www.barcodesinc.com/generator/qr/" target="_blank" onclick="this.closest('details').open=false;">QR generator</a></li>
 	  	  <li><a href="https://massgrave.dev/" target="_blank" onclick="this.closest('details').open=false;">Activate Win Office</a></li>
 	  <li><a href="https://www.drogoreanu.ro/tutorials/cap1.php/" target="_blank" onclick="this.closest('details').open=false;">HTML</a></li>
-<li><a href="https://userutil2025.github.io/Fain/pensionare.html" target="_blank" style="color:white; font-family:Arial; font-size:20px;">Calcul an pensie</a></li>
+	  <li><a href="https://userutil2025.github.io/Fain/pensionare.html" target="_blank" style="color:white; font-family:Arial; font-size:20px;">Calcul an pensie</a></li>
   </ul></details>
   <br>
       <details style="display: inline-block;">
@@ -239,7 +239,10 @@ document.querySelectorAll('#submenu a').forEach(link => {
         z-index:9999;
     ">
 </button>
-
+ <svg width="120" height="120" onclick="document.getElementById('mesaj').innerText = 'E bine'">
+        <circle cx="60" cy="60" r="50" fill="green" />
+        <text x="60" y="65" fill="white" text-anchor="middle" font-family="sans-serif" font-size="16">Apasă</text>
+    </svg>
 <script>
 function afiseazaTimp() {
     var startDate = new Date('2026-07-18T17:00:00');
